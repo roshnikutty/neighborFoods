@@ -1,0 +1,151 @@
+<div class="container">
+    <h1>New Meal Form</h1>
+
+    <form class="form-container" (ngSubmit)="onSubmit()" #newMealForm="ngForm" [hidden]="submitted">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="mealid">Meal Id<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.mealid" name="mealid" 
+                id="mealid" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="foodName">Dish Name<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.foodName" name="foodName" 
+                id="foodName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sellerName">Seller Name<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.sellerName" name="sellerName" 
+                id="sellerName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sellCuisine">Cuisine<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.sellCuisine" name="sellCuisine" 
+                id="sellCuisine" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sellDate">
+              Sale Date<span class="required">*</span> - mm/dd/yyyy
+            </label>
+            <input type="text" class="form-control" minlength="10" #mealSaleDate="ngModel"
+                [(ngModel)]="model.sellDate" name="sellDate"
+                id="sellDate" required>
+            <div *ngIf = "mealSaleDate.touched && mealSaleDate.errors" class="alert alert-danger">
+              Date is invalid
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="sellAddress">Sale Address<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.sellAddress" name="sellAddress" 
+                id="sellAddress" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="sellPlateCount">Plates Available<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.sellPlateCount" name="sellPlateCount" 
+                id="sellPlateCount" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sellAllergens">Food Allergens<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.sellAllergens" name="sellAllergens" 
+                id="sellAllergens">
+          </div>
+
+          <div class="form-group">
+            <label for="sellerEmail">Seller e-mail address<span class="required">*</span></label>
+            <input type="email" class="form-control" #sellerEmail="ngModel"
+                [(ngModel)]="model.sellerEmail" name="sellerEmail" 
+                pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                id="sellerEmail" required>
+            <div *ngIf = "sellerEmail.touched && sellerEmail.errors" class="alert alert-danger">
+              Email is invalid
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price in $<span class="required">*</span></label>
+            <input type="number" class="form-control" #mealPrice="ngModel"
+                [(ngModel)]="model.price" name="price" id="price" required>
+
+            <div *ngIf="model.price == '0'"
+              class="alert alert-danger">
+              Price greater than $0 is required.
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <br>
+        <div><span class="required">*</span> Required fields</div>
+      <br>
+
+      <button type="submit" class="btn btn-success"
+        [disabled]="!newMealForm.form.valid">
+        Submit
+      </button>
+    </form>
+    
+  <!--Details after form is submitted  -->
+
+    <div class="confirmation" [hidden]="!submitted">
+      <h3>New Meal details are submitted!</h3>
+      <div class="row">
+        <div class="col-xs-3">Id</div>
+        <div class="col-xs-9  pull-left">{{ model.mealid }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Dish Name</div>
+        <div class="col-xs-9 pull-left">{{ model.foodName }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Seller Name</div>
+        <div class="col-xs-9 pull-left">{{ model.sellerName }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Cuisine</div>
+        <div class="col-xs-9 pull-left">{{ model.sellCuisine }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Sale Date</div>
+        <div class="col-xs-9 pull-left">{{ model.sellDate }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Plates Available</div>
+        <div class="col-xs-9 pull-left">{{ model.sellPlateCount }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Allergens</div>
+        <div class="col-xs-9 pull-left">{{ model.sellAllergens }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Seller email-address</div>
+        <div class="col-xs-9 pull-left">{{ model.sellerEmail }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">Price</div>
+        <div class="col-xs-9 pull-left">{{ model.price }}</div>
+      </div>
+      <br>
+    </div>
+  
+  </div>
+  

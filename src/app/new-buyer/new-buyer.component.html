@@ -1,0 +1,107 @@
+<div class="container">
+    <h1>New Buyer Form</h1>
+
+    <form class= "form-container" (ngSubmit)="onSubmit()" #newBuyerForm="ngForm" [hidden]="submitted">
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <label for="buyerId">Buyer Id<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.buyerId" name="buyerId" 
+                id="buyerId" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="buyerName">Buyer Name<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.buyerName" name="buyerName" 
+                id="buyerName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="buyer-mealid">I need this Meal id!<span class="required">*</span></label>
+            <input type="text" class="form-control" 
+                [(ngModel)]="model.buyerMealid" name="buyerMealid" 
+                id="buyerMealid" required>
+          </div>
+        </div>
+
+       <div class="col-md-6">
+        <div class="form-group">
+          <label for="name">Dish Name<span class="required">*</span></label>
+          <input type="text" class="form-control" 
+              [(ngModel)]="model.dishName" name="dishName" 
+              id="dishName" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="plates">Plates<span class="required">*</span></label>
+          <input type="number" class="form-control" 
+              [(ngModel)]="model.plates" name="plates" id="plates">
+        </div>
+
+        <div class="form-group">
+          <label for="date">Date of Posting</label>
+          <input type="text" class="form-control" 
+              [(ngModel)]="model.date" name="date" id="date">
+        </div>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <label for="email">Buyer e-mail address<span class="required">*</span></label>
+        <input type="text" class="form-control" 
+            [(ngModel)]="model.email" name="email" 
+            id="email" required>
+      </div>
+      <br>
+      <div><span class="required">*</span> Required fields</div>
+      <br>
+      <button type="submit" class="btn btn-success"
+        [disabled]="!newBuyerForm.form.valid">Submit</button>
+    </form>
+    
+  <!--Details after form is submitted  -->
+    <div class="confirmation" [hidden]="!submitted">
+      <h3>New Buyer details are submitted!</h3>
+      <div class="row">
+        <div class="col-xs-3">Id</div>
+        <div class="col-xs-9  pull-left">{{ model.buyerId }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">Buyer Name</div>
+        <div class="col-xs-9 pull-left">{{ model.buyerName }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">Buyer e-mail</div>
+        <div class="col-xs-9 pull-left">{{ model.email }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">Buyer Meal Id</div>
+        <div class="col-xs-9 pull-left">{{ model.buyerMealid }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">Dish Name</div>
+        <div class="col-xs-9 pull-left">{{ model.dishName }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">Plates</div>
+        <div class="col-xs-9 pull-left">{{ model.plates }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">Date of Meal Posting (optional)</div>
+        <div class="col-xs-9 pull-left">{{ model.date }}</div>
+      </div>
+
+      <br>
+    </div>
+  
+  </div>
+  

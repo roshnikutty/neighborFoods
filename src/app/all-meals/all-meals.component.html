@@ -1,0 +1,42 @@
+
+<ng-container *ngIf="getMeals().length > 0; else elseTemplate">
+    <ul *ngFor="let meal of getMeals(); let i = index" >
+        <li class="menu-row">
+            <div class="row">
+                    <div class="col-md-4 column-1">
+                    <div><span class="specs">Meal id</span> {{meal.mealid}}</div>
+                    <div><span class="specs">Meal</span> {{meal.foodName}}</div>
+                    <div><span class="specs">Cuisine</span> {{meal.sellCuisine}}</div>
+                    <div><span class="specs">Allergies</span> {{meal.sellAllergens}}</div>
+                    </div>
+
+                    <div class="col-md-4">
+                    <div><span class="specs">Price</span> ${{meal.price}}</div>
+                    <div><span class="specs">Plates available</span> {{meal.sellPlateCount}}</div>
+                    <div><span class="specs">Sell date</span> {{meal.sellDate}}</div>
+                    </div>
+
+                    <div class="col-md-4 column-3">
+                    <div><span class="specs">Sold by</span> {{meal.sellerName}}</div>
+                    <div><span class="specs">Seller email</span> {{meal.sellerEmail}}</div>
+                    <div><span class="specs">Pick up address</span> {{meal.sellAddress}}</div>
+                    </div>
+            </div>
+            <section class="row">
+                <!-- The Add option will be seen by the seller who posts it -->
+                <button class="button btn-black" (click)="addToCart(i)">Add to Cart</button>
+
+                <!-- The Add option will be seen by the seller who posts it -->
+                <button class="button btn-black" (click)="viewOnMap(i)">View on map</button>
+                
+                <!-- The Remove option will be seen by the seller who posts it -->
+                <button class="button btn-red" (click)="deleteMeal(i)">Remove listing</button>
+            </section>
+        </li>
+        <br/>
+    </ul>
+  </ng-container>
+
+<ng-template #elseTemplate>
+    <div class="menu-row">No meals yet, add your delicious treat for your neighbors to savor</div>
+</ng-template>

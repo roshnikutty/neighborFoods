@@ -1,0 +1,38 @@
+<h1>Meals on Map</h1>
+<div class="container">
+    <form>
+      <input #fromBox id="from-box" class="mr-xs" placeholder="Boston, MA" name="from"
+        (keyup)="getFrom(fromBox.value)" [(ngModel)]="map.from"
+      />
+      <input #toBox id="to-box" class="mr-xs" placeholder="Meal Pickup address" name="to"
+        (keyup)="getTo(toBox.value)" [(ngModel)]="map.to"
+      /> 
+      <button class="btn-red">Get Directions</button>
+  </form>
+      <table class="table table-condensed table-responsive table-bordered table-width">
+        <thead>
+          <tr class="row">
+            <td class="header-color text-center" colspan="4">
+              <b>Distance:</b> {{distance}}m 
+              &nbsp;-&nbsp;
+              <b>Time:</b> {{formattedTime}}
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row"
+              *ngFor="let direction of directions; let i = index">
+            <td class="col-sm-1 text-center">
+              {{i + 1}}.
+            </td>
+            <td class="col-sm-9">
+                {{direction.narrative}}
+            </td>
+            <td class="col-sm-1 text-center">
+              {{direction.distance}}m
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
