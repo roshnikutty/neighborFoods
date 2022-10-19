@@ -56,7 +56,7 @@ This is an injectable service in the app at src/app/services/map.service.ts
 - Use case 2: Navigate to the /map page route. Here you can manually enter to and from input values
 
 
-# Not implemented in this app, upcoming in version 2 of this app 
+# Upcoming in version 2
 1. Buyer and seller logins and tying them to their meals
 2. Buyer form validation
 
